@@ -1,0 +1,55 @@
+# STM32 build output
+build/
+Debug/
+Release/
+*/build/
+*/Debug/
+*/Release/
+
+# Claude
+**/.claude/
+
+# IDE
+.vs/
+.vscode/
+*.uvguix.*
+*.uvoptx
+*.scvd
+*.dbgconf
+*.launch
+.project
+.settings/
+.cproject
+.metadata/
+mxproject
+
+# STM32Cube generated (redundant with tracked sources)
+*.ioc.bak
+*.ld.bak
+
+# Compiled objects
+*.o
+*.obj
+*.elf
+*.hex
+*.bin
+*.map
+*.lst
+*.d
+*.crf
+*.dep
+*.depend
+
+# Backup
+*.bak
+*.tmp
+*~
+
+# OS
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# Python
+__pycache__/
+*.pyc
