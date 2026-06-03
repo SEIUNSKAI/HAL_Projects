@@ -59,8 +59,13 @@ static void AD9833_WriteReg(uint8_t module, uint16_t data)
  */
 void AD9833_Init(void)
 {
-    /* 确保 SPI 为 16bit 模式（AD9833 要求每次传 16bit） */
-    hspi1.Init.DataSize = SPI_DATASIZE_16BIT;
+    /*
+     * 修正 SPI 模式为 Mode 2（CPOL=1, CPHA=0），匹配 AD9833 时序：
+     *   时钟空闲为高，数据在下降沿被 AD9833 锁存。
+     *   CubeMX 默认 Mode 0（上升沿采样），AD9833 收不到正确数据。
+     */
+    hspi1.Init.CLKPolarity = SPI_POLARITY_HIGH;
+    hspi1.Init.CLKPhase    = SPI_PHASE_1EDGE;
     HAL_SPI_Init(&hspi1);
 
     /* 初始状态：CS 高（不选中） */
