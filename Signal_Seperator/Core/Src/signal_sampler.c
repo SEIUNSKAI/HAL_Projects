@@ -40,6 +40,7 @@ void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef *hadc)
  */
 void Sampler_Init(void)
 {
+    __HAL_TIM_SET_AUTORELOAD(&htim3, 119);   /* 84MHz / 120 = 700kHz */
     HAL_TIM_Base_Start(&htim3);
 }
 
